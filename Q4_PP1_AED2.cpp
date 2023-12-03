@@ -80,10 +80,13 @@ WeightedGraphAM::~WeightedGraphAM()
 
 void WeightedGraphAM::add_edge(Vertex u, Vertex v, Weight weight)
 {
-	Edge edge{weight};
-	adj[u][v] = edge;
-	adj[v][u] = edge;
-	num_edges++;
+	if (adj[u][v].weight == inf)
+	{
+		Edge edge{weight};
+		adj[u][v] = edge;
+		adj[v][u] = edge;
+		num_edges++;
+	}
 }
 
 std::list<Vertex> WeightedGraphAM::get_adj(Vertex u)

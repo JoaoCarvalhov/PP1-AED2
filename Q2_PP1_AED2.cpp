@@ -76,10 +76,12 @@ GraphAM::~GraphAM()
 
 void GraphAM::add_edge(Vertex u, Vertex v)
 {
-	Edge edge{1};
-	adj[u][v] = edge;
-	adj[v][u] = edge;
-	num_edges++;
+	if (adj[u][v].weight == 0){
+		Edge edge{1};
+		adj[u][v] = edge;
+		adj[v][u] = edge;
+		num_edges++;
+	}
 }
 
 std::list<Vertex> GraphAM::get_adj(Vertex u)
@@ -137,9 +139,9 @@ int main(int argc, char const *argv[])
 
 	display_matadj_graph(g);
 
-	g.remove_edge(7, 8);
+	//g.remove_edge(7, 8);
 
-	display_matadj_graph(g);
+	//display_matadj_graph(g);
 
 	return 0;
 }
