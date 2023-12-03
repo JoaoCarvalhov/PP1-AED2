@@ -87,7 +87,9 @@ bool DIgraphAL<T>::vertex_already_exists(Vertex u, Vertex v)
 {
     ItemVertex item_Vertex_u{u};
     ItemVertex item_Vertex_v{v};
+    
     list<ItemVertex> &lista_u = adj[u];
+
     for (auto itr = lista_u.begin(); itr != lista_u.end(); ++itr)
     {
         if (itr->value == item_Vertex_v.value)
@@ -142,8 +144,8 @@ int main()
     input_GraphAL(g, num_edges);
     display_GraphAL(g);
 
-    g.remove_edge(0,2);
+    //g.remove_edge(0,2);
     //cout<<"removendo..."<<endl;
-    display_GraphAL(g);
+    //display_GraphAL(g);
     return 0;
 }
