@@ -140,7 +140,7 @@ int main(int argc, char const *argv[])
     cout << "num_vertices: " << num_vertices << endl;
     cout << "num_edges: " << num_edges << endl;
 
-    GraphAM<Weight> g{num_vertices}; // You can specify the type you want to use, for example, Weight
+    GraphAM<Weight> g{num_vertices};
 
     for (unsigned int i = 0; i < num_edges; ++i)
     {
