@@ -18,7 +18,7 @@ public:
 };
 
 template <typename T>
-class GraphAM
+class DigraphAM
 {
 private:
     unsigned int num_vertices;
@@ -26,8 +26,8 @@ private:
     Edge<T> **adj;
 
 public:
-    GraphAM(unsigned int);
-    ~GraphAM();
+    DigraphAM(unsigned int);
+    ~DigraphAM();
     void add_edge(Vertex, Vertex);
     list<Vertex> get_adj(Vertex);
     T get_weight_edge(Vertex, Vertex);
@@ -37,19 +37,19 @@ public:
 };
 
 template <typename T>
-unsigned int GraphAM<T>::get_num_vertices()
+unsigned int DigraphAM<T>::get_num_vertices()
 {
     return num_vertices;
 }
 
 template <typename T>
-unsigned int GraphAM<T>::get_num_edges()
+unsigned int DigraphAM<T>::get_num_edges()
 {
     return num_edges;
 }
 
 template <typename T>
-GraphAM<T>::GraphAM(unsigned int _num_vertices) : num_vertices(_num_vertices),
+DigraphAM<T>::DigraphAM(unsigned int _num_vertices) : num_vertices(_num_vertices),
                                                   num_edges(0)
 {
     const unsigned int LINHAS = num_vertices;
@@ -62,7 +62,7 @@ GraphAM<T>::GraphAM(unsigned int _num_vertices) : num_vertices(_num_vertices),
 }
 
 template <typename T>
-void GraphAM<T>::remove_edge(Vertex u, Vertex v)
+void DigraphAM<T>::remove_edge(Vertex u, Vertex v)
 {
     Edge<T> edge{0};
     adj[u][v] = edge;
@@ -71,7 +71,7 @@ void GraphAM<T>::remove_edge(Vertex u, Vertex v)
 }
 
 template <typename T>
-GraphAM<T>::~GraphAM()
+DigraphAM<T>::~DigraphAM()
 {
     const unsigned int LINHAS = num_vertices;
     for (int i = 0; i < LINHAS; ++i)
@@ -82,7 +82,7 @@ GraphAM<T>::~GraphAM()
 }
 
 template <typename T>
-void GraphAM<T>::add_edge(Vertex u, Vertex v)
+void DigraphAM<T>::add_edge(Vertex u, Vertex v)
 {
     if (adj[u][v].weight == 0)
     {
@@ -94,7 +94,7 @@ void GraphAM<T>::add_edge(Vertex u, Vertex v)
 }
 
 template <typename T>
-std::list<Vertex> GraphAM<T>::get_adj(Vertex u)
+std::list<Vertex> DigraphAM<T>::get_adj(Vertex u)
 {
     std::list<Vertex> values;
     for (int v = 0; v < num_vertices; ++v)
@@ -108,13 +108,13 @@ std::list<Vertex> GraphAM<T>::get_adj(Vertex u)
 }
 
 template <typename T>
-T GraphAM<T>::get_weight_edge(Vertex u, Vertex v)
+T DigraphAM<T>::get_weight_edge(Vertex u, Vertex v)
 {
     return adj[u][v].weight;
 }
 
 template <typename T>
-void display_matadj_graph(GraphAM<T> &g)
+void display_matadj_graph(DigraphAM<T> &g)
 {
     int k = 0;
 
@@ -140,7 +140,7 @@ int main(int argc, char const *argv[])
     cout << "num_vertices: " << num_vertices << endl;
     cout << "num_edges: " << num_edges << endl;
 
-    GraphAM<Weight> g{num_vertices};
+    DigraphAM<Weight> g{num_vertices};
 
     for (unsigned int i = 0; i < num_edges; ++i)
     {

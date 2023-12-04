@@ -66,7 +66,6 @@ void WeightedDigraphAM<T>::remove_edge(unsigned int u, unsigned int v)
 {
     Edge<T> edge{inf};
     adj[u][v] = edge;
-    adj[v][u] = edge;
     num_edges--;
 }
 
@@ -88,7 +87,6 @@ void WeightedDigraphAM<T>::add_edge(unsigned int u, unsigned int v, T weight)
     {
         Edge<T> edge{weight};
         adj[u][v] = edge;
-        adj[v][u] = edge;
         num_edges++;
     }
 }
